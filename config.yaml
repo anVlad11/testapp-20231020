@@ -1,0 +1,14 @@
+# API HTTP server config
+http_server:
+  address: 0.0.0.0
+  port: 59999
+  listen: true
+# Metrics server config
+metrics:
+  address: 0.0.0.0
+  port: 59998
+  listen: true
+# Tracing config
+tracing:
+  enabled: true
+  provider_url: http://jaeger:14268/api/traces

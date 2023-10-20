@@ -1,0 +1,8 @@
+package: testapp
+generate:
+  client: false
+  models: true
+  embedded-spec: false
+output-options:
+  skip-prune: true
+output: ./pkg/testapp/testapp.gen.go

@@ -1,0 +1,60 @@
+openapi: 3.0.1
+info:
+  title: Math Service
+  version: 1.0.0
+servers:
+  - url: http://localhost:59999
+paths:
+  /v1/fibonacci:
+    post:
+      summary: Serves Fibonacci sequence number of a given position
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/V1FibonacciPostRequestBody"
+      responses:
+        200:
+          description: Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/V1FibonacciPostResponseBody"
+components:
+  schemas:
+    V1FibonacciPostRequestBody:
+      type: object
+      required:
+        - position
+      properties:
+        position:
+          type: integer
+          x-go-type: int64
+          description: "Position of a Fibonacci number in a sequence"
+    V1FibonacciPostResponseBody:
+      type: object
+      required:
+        - data
+        - errors
+        - status
+      properties:
+        data:
+          $ref: "#/components/schemas/V1FibonacciPostResponseBodyData"
+        errors:
+          type: array
+          items:
+            nullable: false
+            type: string
+        status:
+          type: boolean
+          nullable: false
+    V1FibonacciPostResponseBodyData:
+      type: object
+      required:
+        - result
+      properties:
+        result:
+          type: string
+          x-go-type: string
+          description: "Fibonacci number"
