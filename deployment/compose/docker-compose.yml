@@ -1,0 +1,26 @@
+services:
+  testapp:
+    image: docker.io/anvlad11/testapp:main
+    volumes:
+      - ../../config.yaml:/app/config.yaml
+    ports:
+      - "59999:59999"
+      - "59998:59998"
+    networks:
+      - testapp-net
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    restart: unless-stopped
+    environment:
+      - 'COLLECTOR_OTLP_ENABLED=true'
+    ports:
+      - "6831:6831/udp"
+      - "16686:16686"
+      - "14268:14268"
+    networks:
+      - testapp-net
+
+networks:
+  testapp-net:
+    driver: bridge
