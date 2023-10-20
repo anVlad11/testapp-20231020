@@ -2,7 +2,6 @@ package math
 
 import (
 	"context"
-	"github.com/anVlad11/testapp-20231020/pkg/log"
 	"github.com/anVlad11/testapp-20231020/pkg/trace"
 	"github.com/shopspring/decimal"
 	"go.opentelemetry.io/otel/attribute"
@@ -29,7 +28,7 @@ func (s *Service) Fibonacci(ctx context.Context, n int64) (decimal.Decimal, erro
 
 		return decimal.Zero, ctx.Err()
 	default:
-		s.logger.Info("fibo", log.Int64("position", n))
+
 	}
 
 	time.Sleep(100 * time.Millisecond)
