@@ -6,7 +6,6 @@ import (
 	"github.com/shopspring/decimal"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
-	"time"
 )
 
 func (s *Service) Fibonacci(ctx context.Context, n int64) (decimal.Decimal, error) {
@@ -30,8 +29,6 @@ func (s *Service) Fibonacci(ctx context.Context, n int64) (decimal.Decimal, erro
 	default:
 
 	}
-
-	time.Sleep(100 * time.Millisecond)
 
 	if n <= 0 {
 		return decimal.Zero, nil
